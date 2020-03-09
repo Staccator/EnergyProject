@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5044cf9b-5505-4e12-bc37-23f266d94caf" name="Default Changelist" comment="" />
+    <list default="true" id="5044cf9b-5505-4e12-bc37-23f266d94caf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accumulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/accumulator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wyniki1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/wyniki1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +27,11 @@
     <expand />
     <select />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1YZW8HS8h7nICq4CrYoj7HydQfr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -29,6 +39,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -95,7 +106,7 @@
       <workItem from="1583150439585" duration="996000" />
       <workItem from="1583151443670" duration="28637000" />
       <workItem from="1583259363318" duration="28000" />
-      <workItem from="1583784354851" duration="4296000" />
+      <workItem from="1583784354851" duration="6048000" />
     </task>
     <servers />
   </component>
@@ -119,38 +130,38 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state x="1637" y="490" key="FileChooserDialogImpl/62.0.2498.1440@62.0.2498.1440" timestamp="1583180796561" />
-    <state width="1933" height="398" key="GridCell.Tab.0.bottom" timestamp="1583788154464">
+    <state width="868" height="337" key="GridCell.Tab.0.bottom" timestamp="1583791370394">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1933" height="398" key="GridCell.Tab.0.bottom/62.0.2498.1440@62.0.2498.1440" timestamp="1583788154464" />
-    <state width="1933" height="398" key="GridCell.Tab.0.center" timestamp="1583788154464">
+    <state width="868" height="337" key="GridCell.Tab.0.bottom/62.0.2498.1440@62.0.2498.1440" timestamp="1583791370394" />
+    <state width="868" height="337" key="GridCell.Tab.0.center" timestamp="1583791370394">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1933" height="398" key="GridCell.Tab.0.center/62.0.2498.1440@62.0.2498.1440" timestamp="1583788154464" />
-    <state width="1933" height="398" key="GridCell.Tab.0.left" timestamp="1583788154464">
+    <state width="868" height="337" key="GridCell.Tab.0.center/62.0.2498.1440@62.0.2498.1440" timestamp="1583791370394" />
+    <state width="868" height="337" key="GridCell.Tab.0.left" timestamp="1583791370394">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1933" height="398" key="GridCell.Tab.0.left/62.0.2498.1440@62.0.2498.1440" timestamp="1583788154464" />
-    <state width="1933" height="398" key="GridCell.Tab.0.right" timestamp="1583788154464">
+    <state width="868" height="337" key="GridCell.Tab.0.left/62.0.2498.1440@62.0.2498.1440" timestamp="1583791370394" />
+    <state width="868" height="337" key="GridCell.Tab.0.right" timestamp="1583791370394">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1933" height="398" key="GridCell.Tab.0.right/62.0.2498.1440@62.0.2498.1440" timestamp="1583788154464" />
-    <state width="1860" height="348" key="GridCell.Tab.1.bottom" timestamp="1583788419850">
+    <state width="868" height="337" key="GridCell.Tab.0.right/62.0.2498.1440@62.0.2498.1440" timestamp="1583791370394" />
+    <state width="868" height="337" key="GridCell.Tab.1.bottom" timestamp="1583791370394">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.1.bottom/62.0.2498.1440@62.0.2498.1440" timestamp="1583788419850" />
-    <state width="1860" height="348" key="GridCell.Tab.1.center" timestamp="1583788419849">
+    <state width="868" height="337" key="GridCell.Tab.1.bottom/62.0.2498.1440@62.0.2498.1440" timestamp="1583791370394" />
+    <state width="868" height="337" key="GridCell.Tab.1.center" timestamp="1583791370394">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.1.center/62.0.2498.1440@62.0.2498.1440" timestamp="1583788419849" />
-    <state width="1860" height="348" key="GridCell.Tab.1.left" timestamp="1583788419849">
+    <state width="868" height="337" key="GridCell.Tab.1.center/62.0.2498.1440@62.0.2498.1440" timestamp="1583791370394" />
+    <state width="868" height="337" key="GridCell.Tab.1.left" timestamp="1583791370394">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.1.left/62.0.2498.1440@62.0.2498.1440" timestamp="1583788419849" />
-    <state width="1860" height="348" key="GridCell.Tab.1.right" timestamp="1583788419850">
+    <state width="868" height="337" key="GridCell.Tab.1.left/62.0.2498.1440@62.0.2498.1440" timestamp="1583791370394" />
+    <state width="868" height="337" key="GridCell.Tab.1.right" timestamp="1583791370394">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1860" height="348" key="GridCell.Tab.1.right/62.0.2498.1440@62.0.2498.1440" timestamp="1583788419850" />
+    <state width="868" height="337" key="GridCell.Tab.1.right/62.0.2498.1440@62.0.2498.1440" timestamp="1583791370394" />
     <state width="1046" height="723" key="XDebugger.FullValuePopup" timestamp="1583785812345">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
@@ -169,13 +180,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>466</line>
+          <line>464</line>
           <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>176</line>
-          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -197,10 +203,11 @@
         <watch expression="acc_energy_change[-10:]&#10;" language="Python" />
         <watch expression="epsilon" />
         <watch expression="AvailabilityC" />
+        <watch expression="value" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Energy$main.coverage" NAME="main Coverage Results" MODIFIED="1583788154393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Energy$main.coverage" NAME="main Coverage Results" MODIFIED="1583791165059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

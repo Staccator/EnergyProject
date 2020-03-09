@@ -173,15 +173,13 @@ def calculate_target_yearly():
         avC = AvailabilityC[h]
         avD = AvailabilityD[h]
 
-        if hour == 5170:
-            print('x')
         # Changing demand depending on accumulator
 
         avg_for_hour = avg_profit[h // group_hours]
         error_counter = 0
         while True:
-            energy_change = accumulator.accumulator_function(acc_energy_level[index], energy_price, avg_for_hour,
-                                                             error_counter, start_demand)
+            energy_change = accumulator.accumulator_function_basic(acc_energy_level[index], energy_price, avg_for_hour,
+                                                                   error_counter, start_demand)
             temp_demand = start_demand + energy_change
             if temp_demand == 0:
                 acc_energy_change.append(energy_change)
