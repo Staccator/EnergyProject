@@ -21,7 +21,7 @@ def load_data():
     profit = list(energy_data['K'])[:-1]
     global avg_profit
     global group_hours
-    group_hours = 24  # * 2
+    group_hours = 24
     avg_profit = [sum(profit[i * group_hours: min((i + 1) * group_hours, len(profit))]) / group_hours
                   for i in range(math.ceil(8760 / group_hours))]
 
@@ -178,8 +178,8 @@ def calculate_target_yearly():
         avg_for_hour = avg_profit[h // group_hours]
         error_counter = 0
         while True:
-            energy_change = accumulator.accumulator_function_basic(acc_energy_level[index], energy_price, avg_for_hour,
-                                                                   error_counter, start_demand)
+            energy_change = accumulator.accumulator_function(acc_energy_level[index], energy_price, avg_for_hour,
+                                                             error_counter, start_demand)
             temp_demand = start_demand + energy_change
             if temp_demand == 0:
                 acc_energy_change.append(energy_change)
@@ -259,6 +259,13 @@ def calculate_target_yearly():
                         continue
 
                 result, value, success = find_optimization(comb, temp_demand)
+                penalty = 0
+                penalty += 5000 if historyA[-1] and not comb[0] else 0
+                penalty += 36000 if historyB[-1] and not comb[1] else 0
+                penalty += 36000 if historyC[-1] and not comb[2] else 0
+                penalty += 36000 if historyD[-1] and not comb[3] else 0
+                value -= penalty
+
                 if success:
                     hour_results[value] = comb, result
 
