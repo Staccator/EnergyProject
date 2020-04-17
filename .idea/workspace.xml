@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5044cf9b-5505-4e12-bc37-23f266d94caf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/constraints.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_to_file.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/rSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/rSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/lele.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/wyniki1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/wyniki1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/history.py" beforeDir="false" afterPath="$PROJECT_DIR$/history.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,14 +31,22 @@
     <expand />
     <select />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1YZW8HS8h7nICq4CrYoj7HydQfr" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -111,18 +125,51 @@
       <workItem from="1583150439585" duration="996000" />
       <workItem from="1583151443670" duration="28637000" />
       <workItem from="1583259363318" duration="28000" />
-      <workItem from="1583784354851" duration="12164000" />
+      <workItem from="1583784354851" duration="12798000" />
+      <workItem from="1583798157371" duration="2000" />
+      <workItem from="1584123340091" duration="3000" />
+      <workItem from="1584892373942" duration="27000" />
+      <workItem from="1585088396402" duration="16000" />
+      <workItem from="1587111543473" duration="3905000" />
     </task>
+    <task id="LOCAL-00001" summary="Added penalty for startups">
+      <created>1583797571416</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583797571416</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added penalty for startups" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added penalty for startups" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1311" y="376" width="1092" height="718" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583150827510">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state x="1311" y="376" width="1092" height="718" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.2498.1440@62.0.2498.1440" timestamp="1583150827510" />
+    <state x="1418" y="515" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587115154881">
+      <screen x="62" y="0" width="2498" height="1440" />
+    </state>
+    <state x="1418" y="515" key="#com.intellij.fileTypes.FileTypeChooser/62.0.2498.1440@62.0.2498.1440" timestamp="1587115154881" />
     <state x="1232" y="618" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1583153199988">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
@@ -131,50 +178,54 @@
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state x="1639" y="614" width="490" height="519" key="#xdebugger.evaluate/62.0.2498.1440@62.0.2498.1440" timestamp="1583786047235" />
+    <state x="818" y="266" width="1205" height="811" key="CommitChangelistDialog2" timestamp="1583797571046">
+      <screen x="62" y="0" width="2498" height="1440" />
+    </state>
+    <state x="818" y="266" width="1205" height="811" key="CommitChangelistDialog2/62.0.2498.1440@62.0.2498.1440" timestamp="1583797571046" />
     <state x="1637" y="490" key="FileChooserDialogImpl" timestamp="1583180796561">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state x="1637" y="490" key="FileChooserDialogImpl/62.0.2498.1440@62.0.2498.1440" timestamp="1583180796561" />
-    <state width="1948" height="270" key="GridCell.Tab.0.bottom" timestamp="1583794696250">
+    <state width="1948" height="270" key="GridCell.Tab.0.bottom" timestamp="1583798136145">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1948" height="270" key="GridCell.Tab.0.bottom/62.0.2498.1440@62.0.2498.1440" timestamp="1583794696250" />
-    <state width="1948" height="270" key="GridCell.Tab.0.center" timestamp="1583794696250">
+    <state width="1948" height="270" key="GridCell.Tab.0.bottom/62.0.2498.1440@62.0.2498.1440" timestamp="1583798136145" />
+    <state width="1948" height="270" key="GridCell.Tab.0.center" timestamp="1583798136145">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1948" height="270" key="GridCell.Tab.0.center/62.0.2498.1440@62.0.2498.1440" timestamp="1583794696250" />
-    <state width="1948" height="270" key="GridCell.Tab.0.left" timestamp="1583794696250">
+    <state width="1948" height="270" key="GridCell.Tab.0.center/62.0.2498.1440@62.0.2498.1440" timestamp="1583798136145" />
+    <state width="1948" height="270" key="GridCell.Tab.0.left" timestamp="1583798136145">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1948" height="270" key="GridCell.Tab.0.left/62.0.2498.1440@62.0.2498.1440" timestamp="1583794696250" />
-    <state width="1948" height="270" key="GridCell.Tab.0.right" timestamp="1583794696250">
+    <state width="1948" height="270" key="GridCell.Tab.0.left/62.0.2498.1440@62.0.2498.1440" timestamp="1583798136145" />
+    <state width="1948" height="270" key="GridCell.Tab.0.right" timestamp="1583798136145">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1948" height="270" key="GridCell.Tab.0.right/62.0.2498.1440@62.0.2498.1440" timestamp="1583794696250" />
-    <state width="1948" height="270" key="GridCell.Tab.1.bottom" timestamp="1583794696251">
+    <state width="1948" height="270" key="GridCell.Tab.0.right/62.0.2498.1440@62.0.2498.1440" timestamp="1583798136145" />
+    <state width="1948" height="270" key="GridCell.Tab.1.bottom" timestamp="1583798136145">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1948" height="270" key="GridCell.Tab.1.bottom/62.0.2498.1440@62.0.2498.1440" timestamp="1583794696251" />
-    <state width="1948" height="270" key="GridCell.Tab.1.center" timestamp="1583794696251">
+    <state width="1948" height="270" key="GridCell.Tab.1.bottom/62.0.2498.1440@62.0.2498.1440" timestamp="1583798136145" />
+    <state width="1948" height="270" key="GridCell.Tab.1.center" timestamp="1583798136145">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1948" height="270" key="GridCell.Tab.1.center/62.0.2498.1440@62.0.2498.1440" timestamp="1583794696251" />
-    <state width="1948" height="270" key="GridCell.Tab.1.left" timestamp="1583794696251">
+    <state width="1948" height="270" key="GridCell.Tab.1.center/62.0.2498.1440@62.0.2498.1440" timestamp="1583798136145" />
+    <state width="1948" height="270" key="GridCell.Tab.1.left" timestamp="1583798136145">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1948" height="270" key="GridCell.Tab.1.left/62.0.2498.1440@62.0.2498.1440" timestamp="1583794696251" />
-    <state width="1948" height="270" key="GridCell.Tab.1.right" timestamp="1583794696251">
+    <state width="1948" height="270" key="GridCell.Tab.1.left/62.0.2498.1440@62.0.2498.1440" timestamp="1583798136145" />
+    <state width="1948" height="270" key="GridCell.Tab.1.right" timestamp="1583798136145">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state width="1948" height="270" key="GridCell.Tab.1.right/62.0.2498.1440@62.0.2498.1440" timestamp="1583794696251" />
+    <state width="1948" height="270" key="GridCell.Tab.1.right/62.0.2498.1440@62.0.2498.1440" timestamp="1583798136145" />
     <state width="1046" height="723" key="XDebugger.FullValuePopup" timestamp="1583785812345">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
     <state width="1046" height="723" key="XDebugger.FullValuePopup/62.0.2498.1440@62.0.2498.1440" timestamp="1583785812345" />
-    <state x="1308" y="545" key="com.intellij.ide.util.TipDialog" timestamp="1583259363810">
+    <state x="1308" y="545" key="com.intellij.ide.util.TipDialog" timestamp="1584892373829">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
-    <state x="1308" y="545" key="com.intellij.ide.util.TipDialog/62.0.2498.1440@62.0.2498.1440" timestamp="1583259363810" />
+    <state x="1308" y="545" key="com.intellij.ide.util.TipDialog/62.0.2498.1440@62.0.2498.1440" timestamp="1584892373829" />
     <state x="1126" y="342" width="672" height="678" key="search.everywhere.popup" timestamp="1583797501984">
       <screen x="62" y="0" width="2498" height="1440" />
     </state>
@@ -182,13 +233,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>471</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

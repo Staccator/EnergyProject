@@ -3,6 +3,7 @@ def update_historyA(history):
         if value == 0 and history[ind + 1] == 1:
             history[ind] = 2
 
+
 def update_historyBCD(history):
     zero_count = 0
     for ind, value in enumerate(history[:-1]):
@@ -13,9 +14,18 @@ def update_historyBCD(history):
                 continue
 
             if zero_count < 12:
-                for i in range(-3,0):
+                for i in range(-3, 0):
                     history[ind + i] = 3
             else:
-                for i in range(-6,0):
+                for i in range(-6, 0):
                     history[ind + i] = 4
             zero_count = 0
+
+
+def update_history(historyA, historyB, historyC, historyD):
+    update_historyA(historyA)
+    update_historyBCD(historyB)
+    update_historyBCD(historyC)
+    update_historyBCD(historyD)
+
+

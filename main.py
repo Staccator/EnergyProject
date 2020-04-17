@@ -1,13 +1,17 @@
+import time
+
+import numpy as np
+import pandas
+from scipy.optimize import minimize
+
+import accumulator
+import combinations
 from Units.UnitA import *
 from Units.UnitB import *
 from Units.UnitCD import *
-from scipy.optimize import minimize
+from constraints import create_constraints
+from data_to_file import write_to_csv
 from history import *
-import pandas
-import numpy as np
-import combinations
-import time
-import accumulator
 
 
 def load_data():
@@ -40,7 +44,7 @@ def load_data():
     AvailabilityD = list(energy_data['DD'])
 
 
-def target_function(array):
+def custom_target_function(array):
     global profit
     global hour
     K = profit[hour]
@@ -54,77 +58,13 @@ def target_function(array):
     return -value
 
 
-def good_target_function(array, hour, R, pts):
-    global profit
-    K = profit[hour]
-    Pe = array[:4]
-    Pt = array[4:]
-
-    value = sum(Pe) * K + (sum(Pt) - pts) * 130. + \
-            (-32. * UnitA.Zg_per_Pt(Pt[0])) + \
-            (-20.8 * (UnitB.Zw_per_Pe_Pt(Pe[1], Pt[1]) + UnitCD.Zw_per_Pt(Pt[2]) + UnitCD.Zw_per_Pt(Pt[3]))) + \
-            -R
-    return value
-
-
-def create_constraints(combination, demand):
-    constraints = []
-    constraints.append(
-        {'type': 'eq', 'fun': lambda x: sum(x[-4:]) - demand},
-    )
-
-    if combination[0]:  # Unit A
-        constraints.append({'type': 'eq', 'fun': lambda x: UnitA.Pe_per_Pt(x[4]) - x[0]})
-    else:
-        constraints.append({'type': 'eq', 'fun': lambda x: x[0]})
-        constraints.append({'type': 'eq', 'fun': lambda x: x[4]})
-
-    if combination[1]:  # Unit B
-        constraints.extend([
-            {'type': 'ineq', 'fun': lambda x: x[1] - 72.},
-            {'type': 'ineq', 'fun': lambda x: x[5]},
-            {'type': 'ineq', 'fun': lambda x: -0.0842 * x[5] + 120 - x[1]},
-            {'type': 'ineq', 'fun': lambda x: -0.1892 * x[5] + 129.973 - x[1]},
-            {'type': 'ineq', 'fun': lambda x: x[1] - 0.587 * x[5] + 1.956},
-        ]
-        )
-    else:
-        constraints.append({'type': 'eq', 'fun': lambda x: x[1]})
-        constraints.append({'type': 'eq', 'fun': lambda x: x[5]})
-
-    if combination[2]:  # Unit C
-        constraints.append({'type': 'eq', 'fun': lambda x: UnitCD.Pe_per_Pt(x[6]) - x[2]})
-    else:
-        constraints.append({'type': 'eq', 'fun': lambda x: x[2]})
-        constraints.append({'type': 'eq', 'fun': lambda x: x[6]})
-
-    if combination[3]:  # Unit D
-        constraints.append({'type': 'eq', 'fun': lambda x: UnitCD.Pe_per_Pt(x[7]) - x[3]})
-    else:
-        constraints.append({'type': 'eq', 'fun': lambda x: x[3]})
-        constraints.append({'type': 'eq', 'fun': lambda x: x[7]})
-
-    global temperature
-    T = temperature[hour]
-    maxPtA = UnitA.Pt_Max_per_temperature(T)
-
-    boundsA = (40, maxPtA) if combination[0] else (None, None)
-    boundsC = (139, 220) if combination[2] else (None, None)
-    boundsD = (139, 220) if combination[3] else (None, None)
-
-    bounds = (
-        (None, None), (None, None), (None, None), (None, None),
-        boundsA, (None, None), boundsC, boundsD
-    )
-
-    return tuple(constraints), bounds
-
-
 def find_optimization(combination, demand):
     global hour
-    constraints, bounds = create_constraints(combination, demand)
+    global temperature
+    hour_temperature = temperature[hour]
+    constraints, bounds = create_constraints(combination, demand, hour_temperature)
 
-    res = minimize(target_function, np.array([28.86, 73., 66., 66., 41., 1., 140., 140.]),
+    res = minimize(custom_target_function, np.array([28.86, 73., 66., 66., 41., 1., 140., 140.]),
                    method='SLSQP',
                    bounds=bounds,
                    constraints=constraints,
@@ -289,179 +229,11 @@ def calculate_target_yearly():
     historyB = historyB[15:]
     historyC = historyC[15:]
     historyD = historyD[15:]
-    update_historyA(historyA)
-    update_historyBCD(historyB)
-    update_historyBCD(historyC)
-    update_historyBCD(historyD)
+    update_history(historyA, historyB, historyC, historyD)
+
     elapsed = time.time() - start
-    print('ELAPSED TIME')
-    print(elapsed)
-
+    print('ELAPSED TIME = ', elapsed)
     return year_results
-
-
-def upload_to_csv(year_results):
-    global energy_data
-    global historyA
-    global historyB
-    global historyC
-    global historyD
-    global acc_energy_change
-    global acc_energy_level
-    PtS = acc_energy_change[1:]
-    E = acc_energy_level[1:]
-
-    Y = []
-
-    PeA = []
-    PeB = []
-    PeC = []
-    PeD = []
-    RA = []
-    RB = []
-    RC = []
-    RD = []
-
-    PtA = []
-    PtB = []
-    PtC = []
-    PtD = []
-    Pe = []
-    Pt = []
-    ZgA = []
-    Zw = []
-    ZwB = []
-    ZwC = []
-    ZwD = []
-
-    for ind, resulttuple in enumerate(year_results):
-        result = resulttuple[2]
-        # ZUZYCIE GAZU I WEGLA
-        ZgA.append(UnitA.Zg_per_Pt(result[4]))
-        zwb = UnitB.Zw_per_Pe_Pt(result[1], result[5])
-        zwc = UnitCD.Zw_per_Pt(result[6])
-        zwd = UnitCD.Zw_per_Pt(result[7])
-        ZwB.append(zwb)
-        ZwC.append(zwc)
-        ZwD.append(zwd)
-        Zw.append(zwb + zwc + zwd)
-
-        # Moc energii cieplnej i elektrycznej
-        PeA.append(result[0])
-        PeB.append(result[1])
-        PeC.append(result[2])
-        PeD.append(result[3])
-        PtA.append(result[4])
-        PtB.append(result[5])
-        PtC.append(result[6])
-        PtD.append(result[7])
-        # Sumaryczna moc energii cieplnej i elektrycznej
-        Pe.append(result[0] + result[1] + result[2] + result[3])
-        Pt.append(result[4] + result[5] + result[6] + result[7] - PtS[ind])
-        # Rozruch A
-        if historyA[ind] == 2:
-            RA.append(5000)
-        else:
-            RA.append(0)
-        # Rozruch B
-        if historyB[ind] == 3:
-            RB.append(12000)
-        elif historyB[ind] == 4:
-            RB.append(10000)
-        else:
-            RB.append(0)
-        # Rozruch C
-        if historyC[ind] == 3:
-            RC.append(12000)
-        elif historyC[ind] == 4:
-            RC.append(10000)
-        else:
-            RC.append(0)
-        # Rozruch D
-        if historyD[ind] == 3:
-            RD.append(12000)
-        elif historyD[ind] == 4:
-            RD.append(10000)
-        else:
-            RD.append(0)
-        # Funkcja celu
-        R = RA[ind] + RB[ind] + RC[ind] + RD[ind]
-        Y.append(good_target_function(
-            [result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7]],
-            ind, R, PtS[ind])
-        )
-
-    Y.append(sum(Y))
-    Y = [round(x, 3) for x in Y]
-    energy_data['Y'] = Y
-    Pt.append(sum(Pt))
-    Pt = [round(x, 3) for x in Pt]
-    energy_data['Pt'] = Pt
-    Pe.append(sum(Pe))
-    Pe = [round(x, 3) for x in Pe]
-    energy_data['Pe'] = Pe
-    ZgA.append(sum(ZgA))
-    ZgA = [round(x, 3) for x in ZgA]
-    energy_data['ZgA'] = ZgA
-    energy_data['Zg'] = ZgA
-
-    Zw.append(sum(Zw))
-    Zw = [round(x, 3) for x in Zw]
-    energy_data['Zw'] = Zw
-
-    PtA.append(sum(PtA))
-    PtA = [round(x, 3) for x in PtA]
-    energy_data['PtA'] = PtA
-    PtB.append(sum(PtB))
-    PtB = [round(x, 3) for x in PtB]
-    energy_data['PtB'] = PtB
-    PtC.append(sum(PtC))
-    PtC = [round(x, 3) for x in PtC]
-    energy_data['PtC'] = PtC
-    PtD.append(sum(PtD))
-    PtD = [round(x, 3) for x in PtD]
-    energy_data['PtD'] = PtD
-
-    PtS = [round(x, 3) for x in PtS]
-    PtS.append(str(min(PtS)) + '/' + str(max(PtS)))
-    energy_data['PtS'] = PtS
-    E = [round(x, 3) for x in E]
-    E.append(str(min(E)) + '/' + str(max(E)))
-    energy_data['E'] = E
-
-    PeA.append(sum(PeA))
-    PeA = [round(x, 3) for x in PeA]
-    energy_data['PeA'] = PeA
-    PeB.append(sum(PeB))
-    PeB = [round(x, 3) for x in PeB]
-    energy_data['PeB'] = PeB
-    PeC.append(sum(PeC))
-    PeC = [round(x, 3) for x in PeC]
-    energy_data['PeC'] = PeC
-    PeD.append(sum(PeD))
-    PeD = [round(x, 3) for x in PeD]
-    energy_data['PeD'] = PeD
-
-    ZwB.append(sum(ZwB))
-    ZwB = [round(x, 3) for x in ZwB]
-    energy_data['ZwB'] = ZwB
-    ZwC.append(sum(ZwC))
-    ZwC = [round(x, 3) for x in ZwC]
-    energy_data['ZwC'] = ZwC
-    ZwD.append(sum(ZwD))
-    ZwD = [round(x, 3) for x in ZwD]
-    energy_data['ZwD'] = ZwD
-
-    RA.append(sum(RA))
-    energy_data['RA'] = RA
-    RB.append(sum(RB))
-    energy_data['RB'] = RB
-    RC.append(sum(RC))
-    energy_data['RC'] = RC
-    RD.append(sum(RD))
-    energy_data['RD'] = RD
-
-    energy_data.to_csv('data/wyniki1.csv', sep=';', index=False)
 
 
 def main():
@@ -470,8 +242,19 @@ def main():
         year_results = calculate_target_yearly()
     except:
         print('')
-    print('CALCULATED')
-    upload_to_csv(year_results)
+
+    global energy_data
+    global historyA
+    global historyB
+    global historyC
+    global historyD
+    global acc_energy_change
+    global acc_energy_level
+    global profit
+
+    print('Finished, Annual profit amounts to : ', energy_data['Y'][-1:])
+    write_to_csv(year_results, energy_data, historyA, historyB, historyC, historyD, acc_energy_change, acc_energy_level,
+                 profit)
 
 
 main()
